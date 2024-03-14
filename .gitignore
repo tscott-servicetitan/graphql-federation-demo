@@ -1,3 +1,9 @@
 SubgraphA/schema.graphql
 SubgraphB/schema.graphql
 supergraph.graphql
+.idea
+
+SubgraphA/bin
+SubgraphA/object
+SubgraphB/bin
+SubgraphB/object
