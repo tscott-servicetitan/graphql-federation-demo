@@ -5,7 +5,7 @@ namespace SubgraphA.Types;
 
 public class Service
 {
-    [ID, Key, Shareable]
+    [ID, Key]
     public string Id { get; set; } = default!;
 
     [ID]
