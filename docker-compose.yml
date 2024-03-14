@@ -1,0 +1,54 @@
+version: "3.0"
+services:
+  apollo-router:
+    container_name: router
+    image: ghcr.io/apollographql/router:v1.32.0
+    depends_on:
+      rover:
+        condition: service_completed_successfully
+    environment:
+      APOLLO_TELEMETRY_DISABLED: true
+    command: --dev -c /dist/config/router-override.yaml --hr --supergraph /dist/schema/supergraph.graphql
+    ports:
+      - 3000:4000
+    volumes:
+      - ./ApolloRouter/config.yml:/dist/config/router-override.yaml
+      - ./supergraph.graphql:/dist/schema/supergraph.graphql
+
+  subgraph-a:
+    container_name: subgraph-a
+    build:
+      context: ./SubgraphA
+      dockerfile: Docker/Dockerfile
+    volumes:
+      - ./SubgraphA/schema.graphql:/App/schema.graphql
+    ports:
+      - 3001:8080
+
+  subgraph-b:
+    container_name: subgraph-B
+    build:
+      context: ./SubgraphB
+      dockerfile: Docker/Dockerfile
+    volumes:
+      - ./SubgraphB/schema.graphql:/App/schema.graphql
+    ports:
+      - 3002:8080
+
+  rover:
+    build:
+      context: .
+      dockerfile: Rover.Dockerfile
+    depends_on:
+      subgraph-a:
+        condition: service_started
+      subgraph-b:
+        condition: service_started
+    environment:
+      APOLLO_ELV2_LICENSE: accept
+    command: supergraph compose --config /config/supergraph.yaml --output /config/supergraph.graphql
+    volumes:
+      - ./supergraph.yaml:/config/supergraph.yaml
+      - ./supergraph.graphql:/config/supergraph.graphql
+      - ./SubgraphA/schema.graphql:/config/SubgraphA/schema.graphql
+      - ./SubgraphB/schema.graphql:/config/SubgraphB/schema.graphql
