@@ -8,6 +8,11 @@ graph across 2 services.
 * [Apollo Rover](https://www.apollographql.com/docs/rover/)
 * [HotChocolate](https://chillicream.com/docs/hotchocolate/v13)
 
+The project defines two types exposed by different graphs.
+
+* `SubgraphA` defines a type titled [Service](./SubgraphA/Types/Service.cs)
+* `SubgraphB` defines a type titled [Material](./SubgraphB/Types/Material.cs)
+
 ## Building
 
 ```bash
