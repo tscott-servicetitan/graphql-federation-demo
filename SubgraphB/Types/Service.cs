@@ -10,7 +10,7 @@ public class Service
     public string Id { get; set; } = default!;
 
     [ReferenceResolver]
-    public static Service ResolveProductReference(string id) => new() { Id = id };
+    public static Service ResolveServiceReference(string id) => new() { Id = id };
 
     public async Task<IReadOnlyList<Material>> MaterialsAsync([Service] ILogger<Service> logger)
     {

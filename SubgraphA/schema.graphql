@@ -1,4 +1,4 @@
-﻿schema @link(url: "https:\/\/specs.apollo.dev\/federation\/v2.5", import: [ "@key", "@shareable", "FieldSet" ]) {
+﻿schema @link(url: "https:\/\/specs.apollo.dev\/federation\/v2.5", import: [ "@key", "FieldSet" ]) {
   query: Query
 }
 
@@ -9,7 +9,7 @@ type Query {
 }
 
 type Service @key(fields: "id") {
-  id: ID! @shareable
+  id: ID!
   externalId: ID!
   name: String!
 }
@@ -26,9 +26,6 @@ union _Entity = Service
 directive @key(fields: FieldSet! resolvable: Boolean = true) repeatable on OBJECT | INTERFACE
 
 directive @link(url: String! import: [String!]) repeatable on SCHEMA
-
-"Indicates that given object and\/or field can be resolved by multiple subgraphs."
-directive @shareable repeatable on OBJECT | FIELD_DEFINITION
 
 "Scalar representing a set of fields."
 scalar FieldSet
