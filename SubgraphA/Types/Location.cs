@@ -3,7 +3,7 @@ using HotChocolate.ApolloFederation.Types;
 
 namespace SubgraphA.Types;
 
-public class Service
+public class Location
 {
     [ID, Key]
     public string Id { get; set; } = default!;
@@ -14,14 +14,14 @@ public class Service
     public string Name { get; set; } = default!;
 
     [ReferenceResolver]
-    public static Task<Service?> ResolveReferenceById(string id)
+    public static Task<Location?> ResolveReferenceById(string id)
     {
-        return Task.FromResult(Repository.Services.FirstOrDefault(s => s.Id == id));
+        return Task.FromResult(Repository.Locations.FirstOrDefault(s => s.Id == id));
     }
 
     [ReferenceResolver]
-    public static Task<Service?> ResolveReferenceByExternalId(string externalId)
+    public static Task<Location?> ResolveReferenceByExternalId(string externalId)
     {
-        return Task.FromResult(Repository.Services.FirstOrDefault(s => s.ExternalId == externalId));
+        return Task.FromResult(Repository.Locations.FirstOrDefault(s => s.ExternalId == externalId));
     }
 }

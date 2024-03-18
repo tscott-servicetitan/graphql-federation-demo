@@ -5,5 +5,7 @@ supergraph.graphql
 
 SubgraphA/bin
 SubgraphA/object
+SubgraphA/obj
 SubgraphB/bin
 SubgraphB/object
+SubgraphB/obj

@@ -2,8 +2,8 @@ namespace SubgraphA.Types;
 
 public class Query
 {
-    public Task<IReadOnlyList<Service>> ServicesAsync(CancellationToken ct)
+    public Task<IReadOnlyList<Location>> LocationsAsync(CancellationToken ct)
     {
-        return Task.FromResult(Repository.Services);
+        return Task.FromResult(Repository.Locations);
     }
 }

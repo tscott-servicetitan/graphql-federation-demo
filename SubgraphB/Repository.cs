@@ -4,12 +4,12 @@ namespace SubgraphB;
 
 public abstract class Repository
 {
-    public static readonly IReadOnlyList<Material> Materials = new List<Material>
+    public static readonly IReadOnlyList<Equipment> Equipment = new List<Equipment>
     {
-        new() { Id = "material/1", ServiceId = "service/1", Name = "Material1" },
-        new() { Id = "material/2", ServiceId = "service/1", Name = "Material2" },
-        new() { Id = "material/3", ServiceId = "service/2", Name = "Material3" },
-        new() { Id = "material/4", ServiceId = "service/3", Name = "Material4" },
-        new() { Id = "material/5", ServiceId = "service/4", Name = "Material5" },
+        new() { Id = "equipment/1", LocationId = "location/1", Name = "Equipment1" },
+        new() { Id = "equipment/2", LocationId = "location/1", Name = "Equipment2" },
+        new() { Id = "equipment/3", LocationId = "location/2", Name = "Equipment3" },
+        new() { Id = "equipment/4", LocationId = "location/3", Name = "Equipment4" },
+        new() { Id = "equipment/5", LocationId = "location/4", Name = "Equipment5" },
     };
 }
