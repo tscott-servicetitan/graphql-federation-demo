@@ -1,4 +1,4 @@
-using SubgraphB.Types;
+using Products.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 

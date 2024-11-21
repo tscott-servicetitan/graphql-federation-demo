@@ -1,11 +1,11 @@
-SubgraphA/schema.graphql
-SubgraphB/schema.graphql
+Products/schema.graphql
+Inventory/schema.graphql
 supergraph.graphql
 .idea
 
-SubgraphA/bin
-SubgraphA/object
-SubgraphA/obj
-SubgraphB/bin
-SubgraphB/object
-SubgraphB/obj
+Products/bin
+Products/object
+Products/obj
+Inventory/bin
+Inventory/object
+Inventory/obj

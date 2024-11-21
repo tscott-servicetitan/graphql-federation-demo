@@ -1,4 +1,4 @@
-using SubgraphA.Types;
+using Inventory.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 

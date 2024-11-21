@@ -15,23 +15,23 @@ services:
       - ./ApolloRouter/config.yml:/dist/config/router-override.yaml
       - ./supergraph.graphql:/dist/schema/supergraph.graphql
 
-  subgraph-a:
-    container_name: subgraph-a
+  products:
+    container_name: products
     build:
-      context: ./SubgraphA
+      context: ./Products
       dockerfile: Docker/Dockerfile
     volumes:
-      - ./SubgraphA/schema.graphql:/App/schema.graphql
+      - ./Products/schema.graphql:/App/schema.graphql
     ports:
       - 3001:8080
 
-  subgraph-b:
-    container_name: subgraph-B
+  inventory:
+    container_name: inventory
     build:
-      context: ./SubgraphB
+      context: ./Inventory
       dockerfile: Docker/Dockerfile
     volumes:
-      - ./SubgraphB/schema.graphql:/App/schema.graphql
+      - ./Inventory/schema.graphql:/App/schema.graphql
     ports:
       - 3002:8080
 
@@ -40,9 +40,9 @@ services:
       context: .
       dockerfile: Rover.Dockerfile
     depends_on:
-      subgraph-a:
+      products:
         condition: service_started
-      subgraph-b:
+      inventory:
         condition: service_started
     environment:
       APOLLO_ELV2_LICENSE: accept
@@ -50,5 +50,5 @@ services:
     volumes:
       - ./supergraph.yaml:/config/supergraph.yaml
       - ./supergraph.graphql:/config/supergraph.graphql
-      - ./SubgraphA/schema.graphql:/config/SubgraphA/schema.graphql
-      - ./SubgraphB/schema.graphql:/config/SubgraphB/schema.graphql
+      - ./Products/schema.graphql:/config/Products/schema.graphql
+      - ./Inventory/schema.graphql:/config/Inventory/schema.graphql

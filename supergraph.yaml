@@ -1,11 +1,11 @@
 federation_version: =2.5.0
 subgraphs:
-  subgraph-a:
-    routing_url: http://subgraph-a:8080/graphql
+  products:
+    routing_url: http://products:8080/graphql
     schema:
-      file: SubgraphA/schema.graphql
+      file: Products/schema.graphql
 
-  subgraph-b:
-    routing_url: http://subgraph-b:8080/graphql
+  inventory:
+    routing_url: http://inventory:8080/graphql
     schema:
-      file: SubgraphB/schema.graphql
+      file: Inventory/schema.graphql
